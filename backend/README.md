@@ -1,98 +1,135 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+Aquí tienes un ejemplo de README.md para el proyecto backend:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Backend - Sistema de Gestión de Sesiones Universitarias
 
-## Description
+Este proyecto es la parte backend de una aplicación para gestionar sesiones de clases en una universidad. Fue desarrollado utilizando **NestJS** como framework, **Prisma** como ORM para conectarse a una base de datos **PostgreSQL** y cuenta con validaciones mediante **class-validator** y transformaciones con **class-transformer**. La aplicación se encuentra dockerizada para facilitar su despliegue y ejecución.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Características
 
-## Project setup
+- **API RESTful:** Endpoints para gestionar estudiantes, sesiones y asignaciones.
+- **Validación y Transformación:** Uso de `class-validator` y `class-transformer` en los DTOs.
+- **Relaciones de Datos:** Manejo de relaciones entre estudiantes, sesiones y asignaciones con Prisma.
+- **Filtros de Sesiones:** Endpoints para filtrar sesiones por día, semana o mes.
+- **Dockerizado:** Configuración con Docker y Docker Compose para facilitar la puesta en marcha del entorno.
+
+## Requisitos
+
+- Node.js v14 o superior (se recomienda v16)
+- npm o yarn
+- PostgreSQL
+- Docker y Docker Compose (opcional, para entorno dockerizado)
+
+## Instalación
+
+### Clonación del Repositorio
 
 ```bash
-$ yarn install
+git clone <URL_DEL_REPOSITORIO>
+cd backend
 ```
 
-## Compile and run the project
+### Instalación de Dependencias
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+npm install
 ```
 
-## Run tests
+### Configuración de Variables de Entorno
+
+Crea un archivo `.env` en la raíz del proyecto con la siguiente configuración (ajusta según tu entorno):
+
+```env
+DATABASE_URL="postgres://user:password@localhost:5432/test_db"
+PORT=3000
+```
+
+### Configuración de Prisma
+
+Genera el cliente de Prisma y ejecuta la migración inicial:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+npx prisma generate
+npx prisma migrate dev --name init
 ```
 
-## Deployment
+## Ejecución del Proyecto
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Modo Desarrollo
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Inicia la aplicación en modo desarrollo:
 
 ```bash
-$ yarn install -g mau
-$ mau deploy
+npm run start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
-## Resources
+### Modo Producción
 
-Check out a few resources that may come in handy when working with NestJS:
+Construye y levanta la aplicación en producción:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm run build
+npm run start:prod
+```
 
-## Support
+### Uso con Docker
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Si prefieres utilizar Docker, asegúrate de tener Docker y Docker Compose instalados. Luego, desde la raíz del proyecto (donde se encuentre el archivo `docker-compose.yml`), ejecuta:
 
-## Stay in touch
+```bash
+docker-compose up --build
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Esto levantará los contenedores para el backend y la base de datos PostgreSQL.
 
-## License
+## Endpoints Principales
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- **Estudiantes**
+  - `GET /estudiantes` - Obtener lista de estudiantes.
+  - `POST /estudiantes` - Crear un nuevo estudiante.
+
+- **Sesiones**
+  - `GET /sesiones` - Obtener lista de sesiones.
+  - `GET /sesiones/dia/:fecha` - Obtener sesiones de un día específico (formato `YYYY-MM-DD`).
+  - `GET /sesiones/calendar?tipo=week&fecha=YYYY-MM-DD` - Obtener sesiones de una semana.
+  - `GET /sesiones/calendar?tipo=month&fecha=YYYY-MM-DD` - Obtener sesiones de un mes.
+
+- **Asignaciones**
+  - `GET /asignaciones` - Obtener asignaciones (incluyendo datos de estudiante y sesión).
+  - `POST /asignaciones` - Crear una asignación (inscribir un estudiante a una sesión).
+
+## Estructura del Proyecto
+
+```
+/backend
+  ├── src
+  │   ├── modules/student
+  │   │   ├── dto
+  │   │   │   └── create-student.dto.ts
+  │   │   ├── student.controller.ts
+  │   │   └── student.service.ts
+  │   │   └── student.module.ts
+  │   ├── ,modules/sesion
+  │   │   ├── dto
+  │   │   │   └── create-sesion.dto.ts
+  │   │   ├── sesion.controller.ts
+  │   │   └── sesion.service.ts
+  │   │   └── sesion.module.ts
+  │   ├── modeules/assignment
+  │   │   ├── dto
+  │   │   │   └── create-assignment.dto.ts
+  │   │   ├── assignment.controller.ts
+  │   │   └── assignment.service.ts
+  │   │   └── assignment.module.ts
+  │   └── app.module.ts
+  │   └── main.ts
+  ├── prisma
+  │   └── schema.prisma
+  ├── .env
+  ├── package.json
+  ├── Dockerfile
+  └── README.md
+```

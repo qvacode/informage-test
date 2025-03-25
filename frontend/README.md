@@ -1,54 +1,90 @@
-# React + TypeScript + Vite
+### 📄 `README.md`
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🗓️ Calendario de Eventos - React App
 
-Currently, two official plugins are available:
+Aplicación de calendario interactivo construida con **React + Vite + TypeScript**, utilizando **shadcn/ui**, **TailwindCSS**, **TanStack Query**, y dockerizada para despliegue.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Vista de calendario semanal o mensual
+- Selección de fechas con eventos asociados
+- Cards de eventos con scroll horizontal y estilo responsive
+- Modal con detalles al hacer clic en un evento
+- Carga de datos mediante TanStack Query
+- Soporte para variables de entorno y despliegue vía Docker
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🧱 Stack Técnico
+
+- [React + Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.dev/)
+- [TanStack Query](https://tanstack.com/query)
+- [date-fns](https://date-fns.org/)
+- [Docker + Nginx](https://www.docker.com/)
+
+---
+
+## 📦 Instalación y ejecución local
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/react-calendario-eventos.git
+cd react-calendario-eventos
+
+# Instalar dependencias
+npm install
+
+# Ejecutar la app
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🔧 Variables de Entorno
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Crear un archivo `.env` en la raíz con la siguiente variable:
+
+```env
+VITE_API_BASE_URL=http://localhost:3000/api
+```
+
+---
+
+## 🐳 Docker
+
+### Crear imagen y levantar el contenedor:
+
+```bash
+docker build -t react-calendar-app .
+docker run -d -p 3000:80 react-calendar-app
+```
+
+La app estará disponible en:  
+👉 [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🧪 Scripts útiles
+
+```bash
+npm run dev       # Dev server
+npm run build     # Build de producción
+npm run preview   # Previsualizar build
+```
+
+---
+
+## 📂 Estructura de carpetas
+
+```
+src/
+├── api/             # Lógica de llamadas a la "API"
+├── components/      # Componentes reutilizables
+├── App.tsx
+└── main.tsx
 ```
