@@ -66,6 +66,8 @@ npm run start:dev
 
 La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
+Consulte la documentación de la API: [http://localhost:3000/api/v1/doc](http://localhost:3000/api/v1/doc).
+
 ### Modo Producción
 
 Construye y levanta la aplicación en producción:
@@ -80,26 +82,30 @@ npm run start:prod
 Si prefieres utilizar Docker, asegúrate de tener Docker y Docker Compose instalados. Luego, desde la raíz del proyecto (donde se encuentre el archivo `docker-compose.yml`), ejecuta:
 
 ```bash
-docker-compose up --build
+docker-compose up -d
 ```
 
-Esto levantará los contenedores para el backend y la base de datos PostgreSQL.
+Esto levantará los contenedores para el backend, la base de datos PostgreSQL y el frontend en el puerto 4321.
 
 ## Endpoints Principales
 
 - **Estudiantes**
-  - `GET /estudiantes` - Obtener lista de estudiantes.
-  - `POST /estudiantes` - Crear un nuevo estudiante.
+  - `GET /student` - Obtener lista de estudiantes.
+  - `POST /student` - Crear un nuevo estudiante.
+  - `GET /student:id` - Obtiene un estudiante por id.
+  - `PATCH /student:id` - Actualiza uno o varios valores de un estudiante.
+  - `DELETE /student:id` - Elimina un estudiante.
 
 - **Sesiones**
-  - `GET /sesiones` - Obtener lista de sesiones.
-  - `GET /sesiones/dia/:fecha` - Obtener sesiones de un día específico (formato `YYYY-MM-DD`).
-  - `GET /sesiones/calendar?tipo=week&fecha=YYYY-MM-DD` - Obtener sesiones de una semana.
-  - `GET /sesiones/calendar?tipo=month&fecha=YYYY-MM-DD` - Obtener sesiones de un mes.
+  - `GET /sesion` - Obtener lista de sesiones.
+  - `GET /sesion/dia/:fecha` - Obtener sesiones de un día específico (formato `YYYY-MM-DD`).
+  - `GET /sesion/calendar/YYYY-MM-DD?tipo=week` - Obtener sesiones de una semana.
+  - `GET /sesion/calendar/YYYY-MM-DD?tipo=month` - Obtener sesiones de un mes.
 
 - **Asignaciones**
-  - `GET /asignaciones` - Obtener asignaciones (incluyendo datos de estudiante y sesión).
-  - `POST /asignaciones` - Crear una asignación (inscribir un estudiante a una sesión).
+  - `GET /assignment` - Obtener asignaciones (incluyendo datos de estudiante y sesión).
+  - `POST /assignment` - Crear una asignación (inscribir un estudiante a una sesión).
+  - `GET /assignment/:id` - Lista una asignacion por id.
 
 ## Estructura del Proyecto
 
